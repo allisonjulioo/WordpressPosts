@@ -95,6 +95,6 @@ Lembrando que o Wordpress tem que estar executando para que o App pegue as crede
 #### O que poderia ter sido feito de uma maneira melhor?
 Um estudo mais detalhado da documentação do Wp-api, e um planejamento melhor da plataforma do Front, pois inicialmente comecei a desenvolver no Ionic e Cordova, mas tive muitos problemas com a edição de posts e o rich text editor, então tive que recomeçar utilizando o Angular 6 e o Material design do Angular como estilo de pagina.
 
-### Quaisquer outras notas que julgar relevantes para a avaliação.
+#### Quaisquer outras notas que julgar relevantes para a avaliação.
 O prejeto em si é bem interessante, não deu para fazer tudo que eu planejei no começo por ter tido um atraso de quase quatro dias, por ter que refazer o projeto, resultado de problemas com o Ionic. Gostei da interface, claro que dá para melhorar. Um grande problema é que tenho que entregar sem fazer mais testes. Enfim boa sorte para mim.
 
