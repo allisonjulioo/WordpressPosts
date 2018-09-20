@@ -1,0 +1,45 @@
+@import '~@angular/material/theming';
+@include mat-core();
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+$primary: mat-palette($mat-blue-gray, 800);
+$warn: mat-palette($mat-red, 800);
+$accent:  mat-palette($mat-red, 800);
+$text-color: mat-palette($mat-gray, 100);
+$button-color :#fff;
+$bg-color: #fff;
+
+  $theme: mat-light-theme($primary, $warn, $accent);
+
+@include angular-material-theme($theme);
+
+
+.head-block {
+  display: block;
+  height: 48px;
+  margin: 23px auto 0;
+
+  h3{
+    float: left;
+  }
+  button{
+    float:right;
+  }
+}
+
+/* Primary Elements >>>>>>>>*/
+button.primary{
+  background:  map-get($primary, 400);
+  color: #fff;
+}
+h1.primary, h2.primary, h3.primary, h4.primary, h5.primary{
+  color:  map-get($primary, 400);
+}
+button.secondary{
+  background: map-get($primary, 400);
+  color: #fff;
+}
+h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary{
+  color:  map-get($primary, 400);
+}
+/*<<<<*/

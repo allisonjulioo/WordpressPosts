@@ -1,0 +1,40 @@
+<mat-progress-bar mode="indeterminate" *ngIf="posts.length==0"></mat-progress-bar>
+<div class="grid-containe wrapper">
+      <form *ngIf="posts.length>0">
+          <mat-form-field>
+            <mat-select placeholder="Categorias" [(ngModel)]="selectedcategory" name="category" multiple>
+              <mat-option *ngFor="let category of categoriesList" [value]="category">
+                {{category}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      
+  <h1 class="mat-h1" *ngIf="selectedcategory"><strong>Exibindo por categoria: </strong> <span *ngFor="let cat of selectedcategory">{{cat}}, </span></h1>
+  <mat-card class="dashboard-card" *ngFor="let post of posts">
+    <mat-card-header>
+      <mat-card-title>{{ post.title.rendered }}</mat-card-title>
+      <mat-card-subtitle>{{ post.date_gmt | date }}</mat-card-subtitle>
+      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item  *ngIf='token' (click)='updatePost(post)'>Editar</button>
+        <button mat-menu-item  *ngIf='token' (click)='deletePost(post.id, $index)'>Excluir</button>
+      </mat-menu>
+    </mat-card-header>
+    <!-- <img matCardImage [src]="post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url"> -->
+
+    <mat-card-content class="dashboard-card-content">
+      <div [innerHTML]="post.content.rendered"></div>
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <a mat-button [href]="post.link" color="primary" target="_blank">Visualizar</a>
+      <mat-card-title><span *ngIf="post.status=='publish'" class="status">Publicado</span></mat-card-title>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!-- <ng-template #postEdit>
+    <app-post-edit [post]='editingPost' [token]='token' (finish)='editingPost = null; getPosts()'></app-post-edit>
+  </ng-template> -->

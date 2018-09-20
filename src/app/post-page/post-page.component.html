@@ -1,0 +1,61 @@
+<div class="edit">
+
+  <mat-label>
+    <mat-card-content>
+      <mat-card>
+        <app-ngx-editor [config]="editorConfig" [(ngModel)]="new_post.content">
+        </app-ngx-editor>
+      </mat-card>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-card>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Titulo do post" [(ngModel)]="new_post.title" name="title"></textarea>
+          </mat-form-field>
+        </form>
+        <form class="example-form">
+
+          <mat-form-field class="example-full-width">
+            <mat-card-subtitle matPrefix>{{apiUrl}}/ </mat-card-subtitle>
+            <input type="tel" matInput value="post-blog" class="input" [(ngModel)]="urlPost" name="urlPost">
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </form>
+      </mat-card>
+    </mat-card-content>
+    <h3 *ngIf='token == null'> Please, authorize to create a post </h3>
+  </mat-label>
+
+  <mat-card-content class="actions">
+    <mat-card>
+      <img matCardImage src="./assets/img/dev.png">
+      <mat-card-actions align="start">
+        <mat-card-title><span>Ações</span></mat-card-title>
+        <button mat-raised-button color="primary" target="_blank" [disabled]="!new_post.content" >Visualizar no Blog</button><br>
+        <button mat-raised-button color="primary" target="_blank" [disabled]="!new_post.content" (click)="createPost()">Salvar</button><br>
+        <button mat-stroked-button color="warn" target="_blank" [disabled]="!new_post.content" (click)="new_post.content = null">Excluir</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card-content>
+</div>
+<!-- <div>
+    <h2> Post Creation </h2>
+    
+<h3 *ngIf='token == null'> Please, authorize to create a post </h3>
+      <form (ngSubmit)='createPost()'>
+        <div class="form-group">
+          <label for="title">Post title</label>
+          <input type="text" class="form-control" [(ngModel)]='new_post.title' name='title' id="title" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="content">Post content</label>
+          <textarea class="form-control" id="content" required [(ngModel)]='new_post.content' name='content'></textarea>
+        </div>
+  
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+  </div> -->
