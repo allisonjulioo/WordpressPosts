@@ -1,4 +1,4 @@
-import { WordpressService } from './../services/wordpress.service';
+import { Router } from '@angular/router';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { WpApiPosts } from 'wp-api-angular';
@@ -18,7 +18,7 @@ export class PostsComponent {
 
   EditPost = null;
 
-  public post: Posts;
+  public postEdit: Posts;
 
   posts = []
 
@@ -29,7 +29,10 @@ export class PostsComponent {
   categoriesList: string[] = ['Saúde', 'Beleza', 'Bem estar', 'Cuidados', 'Dicas'];
   action: 'ok'
 
-  constructor(private wp: WordpressService, private wpApiPosts: WpApiPosts, public snackBar: MatSnackBar, private data: DataService) {
+  constructor( private wpApiPosts: WpApiPosts, 
+               public snackBar: MatSnackBar, 
+               private data: DataService,
+               private router : Router) {
     this.getPosts();
   }
 
@@ -63,13 +66,13 @@ export class PostsComponent {
   }
 
   updatePost(post) {
-    this.post = post;
-    this.data.updatePost(this.post)
+    this.postEdit = post;
+    this.data.updatePost(this.postEdit)
+    this.router.navigate(['post-edit']);
 
   }
 
   ngOnInit() {
-    this.data.postEdit.subscribe(posts => this.post = posts);
-    console.log(this.post);
+    this.data.currentPost.subscribe(posts => this.postEdit = posts);
   }
 }

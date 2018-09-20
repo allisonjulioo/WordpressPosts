@@ -18,7 +18,7 @@
 
           <mat-form-field class="example-full-width">
             <mat-card-subtitle matPrefix>{{apiUrl}}/ </mat-card-subtitle>
-            <input type="tel" matInput value="post-blog" class="input" [(ngModel)]="urlPost" name="urlPost">
+            <input type="tel" matInput value="post-blog" class="input" [(ngModel)]="posts.url" name="urlPost">
             <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
               <mat-icon>close</mat-icon>
             </button>

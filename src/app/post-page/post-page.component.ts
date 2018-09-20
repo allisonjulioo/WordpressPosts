@@ -16,16 +16,17 @@ import { Posts } from '../posts/posts';
 })
 
 export class PostPageComponent implements OnInit {
-  
+
   @Input() token = localStorage.getItem('token');
 
   posts = {
     title: '',
     content: '',
+    url: '',
     status: 'publish'
   }
-  public post: Posts;
-  
+  public postEdit: Posts;
+
   apiUrl = environment.api_url
   urlPost: string;
   action: any;
@@ -50,34 +51,39 @@ export class PostPageComponent implements OnInit {
       ["link", "unlink", "image", "video"]
     ]
   }
-  constructor(private wp: WordpressService, 
-              private http: HttpClient,
-              private wpApiPosts: WpApiPosts, 
-              private router : Router, 
-              public snackBar: MatSnackBar,
-              private data: DataService) {
+  constructor(private wp: WordpressService,
+    private http: HttpClient,
+    private wpApiPosts: WpApiPosts,
+    private router: Router,
+    public snackBar: MatSnackBar,
+    private data: DataService) {
   }
 
   ngOnInit() {
-    this.data.postEdit.subscribe(posts => this.post = posts);
-    console.log(this.post);
+    this.data.currentPost.subscribe(posts => this.postEdit = posts);
+    if (this.postEdit.id) {
+      this.posts.title = this.postEdit.title.rendered;
+      this.posts.content = this.postEdit.content.rendered;
+      this.posts.url = this.postEdit.link;
+    }
   }
 
-  createPost() {       
+
+  createPost() {
     let headers: Headers = new Headers({
       'Authorization': 'Bearer ' + this.token
     });
-  
+
     this.wpApiPosts.create(this.posts, { headers: headers })
-    .toPromise()
-    .then( response => {
-      this.router.navigate(['posts-page']);   
-      this.snackBar.open('Post criado com sucesso!', this.action, {
-        duration: 2000,
+      .toPromise()
+      .then(response => {
+        this.router.navigate(['posts-page']);
+        this.snackBar.open('Post criado com sucesso!', this.action, {
+          duration: 2000,
         });
-    })
+      })
   }
-  getPost($event){
+  getPost($event) {
     this.posts = $event;
   }
 }

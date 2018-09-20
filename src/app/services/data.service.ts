@@ -6,16 +6,17 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-public post = new Posts();
+public postEdit = new Posts();
 
-public postEdit = new BehaviorSubject(this.post);
-currentPost = this.postEdit.asObservable();
+public dataPost = new BehaviorSubject(this.postEdit);
+currentPost = this.dataPost.asObservable();
 
   constructor() {
-    this.post.title = 'Test.'
+    this.postEdit.title = ''
+    this.postEdit.content = ''
    }
 
-   updatePost(posts : Posts){
-     this.postEdit.next(posts);
+   updatePost(postEdit : Posts){
+     this.dataPost.next(postEdit);
    }
 }

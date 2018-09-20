@@ -37,7 +37,7 @@ export class NavHeaderComponent implements OnInit {
     router.events.filter((event: any) => event instanceof NavigationEnd)
       .subscribe(event => {
         if (event.url === '/post-edit') {
-          this.title = 'Editar post'
+          this.title = 'Novo post'
         }
         else if (event.url === '/third-page') {
           this.title = 'Relatório Analytcs'

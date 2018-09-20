@@ -31,7 +31,7 @@ export class AuthService {
         this.tokenChange.emit(this.token);
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', btoa(JSON.stringify(data.user)));
-        this.router.navigate(['post-edit']);
+        this.router.navigate(['posts-page']);
       });
   }
   logout(): void {
@@ -46,7 +46,7 @@ export class AuthService {
   userAreAutenticate() {
     return this.userAutenticate;
   }
-  // logisn(credentials: { username: string, password: string }) {
+  // login(credentials: { username: string, password: string }) {
   //   this.http.post(`http://${environment.api_url}/wp-json/jwt-auth/v1/token`, {
   //     username: this.user.login,
   //     password: this.user.password

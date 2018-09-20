@@ -14,9 +14,11 @@ $font-default: 'Exo';
 
 $success: #5cb85c;
 $error: #d9534f;
-.login-form{
+.login-form{    
   display: table;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 .site-url{
   display: flex;
@@ -49,11 +51,11 @@ input {
 }
 
 .left {
-  width: 50%;
+  width: 100%;
   height: 100%;
   background: $theme-signup-background;
   left: 0;
-  position: absolute;
+  position: relative;
   background-size: cover;
   background-position-x: center;
   label {
@@ -77,12 +79,15 @@ input {
   }
 }
 .right {
-  width: 50%;
-  height: 100%;
-  overflow: scroll;
   background: $theme-login-background;
-  right: 0;
+  width: 400px;
+  right: 20%;
   position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  height: 600px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px #d2d2d2;
   label {
     color: $theme-dark;
   }
@@ -179,6 +184,10 @@ strong{
     position: relative;
     width: 100%;
     background: transparent;
+    transform: none;
+    right: 0;
+    top: -110px;
+    box-shadow: none;
   }
   button {
     width: 100%;
