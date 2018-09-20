@@ -1,6 +1,15 @@
 @import 'variables.scss';
 
 :hostapp-nav-header{
+  .is-active{
+    border-left: 4px solid #e4176a;
+    background: #fafafa;
+    &.add-new-post{
+      background: #37474f !important;
+      border-left: 4px solid #e4176a;
+
+    }
+  }
   .post-btn {
     width: 100%;
     height: 50px;
@@ -28,12 +37,12 @@
     top: 0;
   }
   .logout {
-    border-radius: 50px;
     text-align: center;
     justify-content: center;
     float: right;
     position: absolute;
     right: 20px;
+    top: 10px;
 }
   
 }

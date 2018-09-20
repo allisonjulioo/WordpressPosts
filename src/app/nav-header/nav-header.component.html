@@ -14,15 +14,15 @@
     </mat-toolbar>
     <mat-nav-list>
       
-      <button mat-flat-button routerLink="post-edit" class="add-new-post post-btn">
+      <button mat-flat-button routerLink="post-edit" class="add-new-post post-btn"  [routerLinkActive]="['is-active']">
         <mat-icon>add_circle</mat-icon>
         <span>Novo post</span>
       </button>
-      <button mat-flat-button routerLink="posts-page" color="light" class="post-btn">
+      <button mat-flat-button routerLink="posts-page" color="light" class="post-btn" [routerLinkActive]="['is-active']">
         <mat-icon>chrome_reader_mode </mat-icon> 
         <span>Todos os posts</span>
       </button>
-      <button mat-flat-button routerLink="third-page" color="light" class="post-btn">
+      <button mat-flat-button routerLink="third-page" color="light" class="post-btn" [routerLinkActive]="['is-active']">
         <mat-icon>scatter_plot</mat-icon>
         <span>Analytcs</span>
       </button>
@@ -42,7 +42,7 @@
       <mat-chip-list>
         <h1 class="mat-h1" *ngIf="this.router === '/post-edit'"></h1>
         {{title}}
-          <button mat-button color="light" class="logout" (click)="logout()">Sair <mat-icon>keyboard_arrow_right</mat-icon></button>
+          <button mat-flat-button color="light" class="logout" (click)="logout()">Sair <mat-icon>keyboard_arrow_right</mat-icon></button>
         </mat-chip-list>
     </mat-toolbar>
     <router-outlet>

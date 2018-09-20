@@ -1,4 +1,4 @@
-import { AuthService } from './services/auth.service';
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';

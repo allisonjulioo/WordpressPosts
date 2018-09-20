@@ -22,6 +22,7 @@ export class UsersComponent implements OnInit {
     .then( response => {
       let json: any = response.json();
       this.users = json;
+      console.log(this.users)
     })
   }
 }

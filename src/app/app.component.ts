@@ -1,4 +1,4 @@
-import { AuthService } from './nav-header/services/auth.service';
+import { AuthService } from './services/auth.service';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';

@@ -24,9 +24,15 @@
     z-index: 0;
     max-width: 300px;
     min-width: 300px;
+    height: 280px;
     float: left;
     margin: 0 20px 20px 0;
     animation: zoomInDown .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    a{
+      position: absolute;
+      bottom: 20px;
+      margin-left: 15px;
+    }
     .mat-card-header{
       display: flex;
       .mat-card-title{
@@ -40,6 +46,14 @@
         margin: 2px 21px;
         font-size: 12px;
         font-style: italic;
+        height: 22px;
+        padding: 3px 10px 0;
+        position: absolute;
+        bottom: 100px;
+        border-radius: 2px;
+        right: 0;
+        background: #e4176a;
+        color: #fff;
   
       }
     }
@@ -63,10 +77,10 @@
       }
     }
     .status {
-      opacity: 0;
+      opacity: 1;
       position: absolute;
       font-size: 12px;
-      bottom: 20px;
+      bottom: 30px;
       right: 25px;
       color: rgba($theme-primary, .4);
       transition: all .1s ease-out;

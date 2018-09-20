@@ -1,11 +1,11 @@
-import { WordpressService } from './../nav-header/services/wordpress.service';
-import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { WordpressService } from './../services/wordpress.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { WpApiPosts } from 'wp-api-angular';
 import { Headers } from '@angular/http';
 import { MatSnackBar } from '@angular/material';
-
+import { Posts } from './posts';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-posts',
@@ -13,18 +13,23 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent {
+
   @Input() token = localStorage.getItem('token');
 
-  posts = [];
-  editingPost = null;
+  EditPost = null;
 
+  public post: Posts;
+
+  posts = []
+
+  @Output() postsEvent = new EventEmitter<any>();
 
   category = new FormControl();
   selectedcategory: string;
   categoriesList: string[] = ['Saúde', 'Beleza', 'Bem estar', 'Cuidados', 'Dicas'];
   action: 'ok'
 
-  constructor(private wp: WordpressService, private wpApiPosts: WpApiPosts, public snackBar: MatSnackBar) {
+  constructor(private wp: WordpressService, private wpApiPosts: WpApiPosts, public snackBar: MatSnackBar, private data: DataService) {
     this.getPosts();
   }
 
@@ -57,10 +62,14 @@ export class PostsComponent {
     });
   }
 
- public updatePost(post) {
-    this.editingPost = post;
-    console.log(this.editingPost)
+  updatePost(post) {
+    this.post = post;
+    this.data.updatePost(this.post)
+
   }
 
-
+  ngOnInit() {
+    this.data.postEdit.subscribe(posts => this.post = posts);
+    console.log(this.post);
+  }
 }

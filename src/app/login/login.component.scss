@@ -14,7 +14,10 @@ $font-default: 'Exo';
 
 $success: #5cb85c;
 $error: #d9534f;
-
+.login-form{
+  display: table;
+  overflow: hidden;
+}
 .site-url{
   display: flex;
   align-items: center;

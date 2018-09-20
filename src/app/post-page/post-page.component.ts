@@ -1,11 +1,13 @@
 import { environment } from './../../environments/environment';
-import { WordpressService } from './../nav-header/services/wordpress.service';
+import { WordpressService } from './../services/wordpress.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { WpApiPosts } from 'wp-api-angular';
 import { Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { DataService } from '../services/data.service';
+import { Posts } from '../posts/posts';
 
 @Component({
   selector: 'app-post-page',
@@ -17,11 +19,13 @@ export class PostPageComponent implements OnInit {
   
   @Input() token = localStorage.getItem('token');
 
-  new_post = {
+  posts = {
     title: '',
     content: '',
     status: 'publish'
   }
+  public post: Posts;
+  
   apiUrl = environment.api_url
   urlPost: string;
   action: any;
@@ -46,17 +50,25 @@ export class PostPageComponent implements OnInit {
       ["link", "unlink", "image", "video"]
     ]
   }
-  constructor(private wp: WordpressService, private http: HttpClient, private wpApiPosts: WpApiPosts, private router : Router, public snackBar: MatSnackBar) {
+  constructor(private wp: WordpressService, 
+              private http: HttpClient,
+              private wpApiPosts: WpApiPosts, 
+              private router : Router, 
+              public snackBar: MatSnackBar,
+              private data: DataService) {
   }
 
   ngOnInit() {
+    this.data.postEdit.subscribe(posts => this.post = posts);
+    console.log(this.post);
   }
+
   createPost() {       
     let headers: Headers = new Headers({
       'Authorization': 'Bearer ' + this.token
     });
   
-    this.wpApiPosts.create(this.new_post, { headers: headers })
+    this.wpApiPosts.create(this.posts, { headers: headers })
     .toPromise()
     .then( response => {
       this.router.navigate(['posts-page']);   
@@ -64,5 +76,8 @@ export class PostPageComponent implements OnInit {
         duration: 2000,
         });
     })
+  }
+  getPost($event){
+    this.posts = $event;
   }
 }

@@ -33,7 +33,8 @@ import {  MatToolbarModule,
           MatInputModule,
           MatRadioModule,
           MatSnackBarModule,
-          MatProgressBarModule
+          MatProgressBarModule,
+          MatDialogModule
           } 
 from '@angular/material';
 
@@ -46,9 +47,8 @@ import {
 import { Http } from '@angular/http';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
-import { AuthService } from './nav-header/services/auth.service';
+import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
-import { PostEditComponent } from './post-edit/post-edit.component';
 
 export function WpApiLoaderFactory(http: Http) {
   return new WpApiStaticLoader(http, 'http://'+environment.api_url+'/wp-json/wp/v2/', '');
@@ -63,7 +63,6 @@ export function WpApiLoaderFactory(http: Http) {
     PostsComponent,
     LoginComponent,
     UsersComponent,
-    PostEditComponent,
     
   ],
   imports: [
@@ -94,7 +93,8 @@ export function WpApiLoaderFactory(http: Http) {
     }),
     MatRadioModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule
   ],
   providers: [
     AuthService,
