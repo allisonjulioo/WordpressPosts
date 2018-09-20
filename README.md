@@ -77,11 +77,12 @@ npm install -g @angular/cli
 - Entre nessa pasta e rode o comando ``npm install`` para instalar todas as dependências que o app precisa
 - Rode o comando ``ng serve --open``
 - O App abrirá em localhost na porta :4200
-<strong> Os estilos o app estão ``.sass``, por este motivo pode ocorrer que o app de errô ao iniciar caso esteja usando um SO Linux, para resolver isso, execute o comando:
+<strong> Os estilos o app estão ``.sass``, por este motivo pode ocorrer que o app de errô ao iniciar caso esteja usando um SO Linux, para resolver isso, execute o comando: </strong>
   
 ```sh
 npm rebuild node-sass --force
 ````
 Ele vai forçar a construção do estilo do app. 
 
+Lembrando que o Wordpress tem que estar executando para que o App pegue as credenciais e os arquivos
 ## Fim
