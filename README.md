@@ -74,7 +74,7 @@ npm install -g @angular/cli
 ```
 #### Após instalado execute o App
 - Faça um clone desse repositório em uma pasta de sua preferência
-- Entre nessa pasta e rode o comando ``npm install`` para instalar todas as dependências que o app precisa
+- Entre nessa pasta do App e rode o comando ``npm install`` para instalar todas as dependências que o app precisa
 - Rode o comando ``ng serve --open``
 - O App abrirá em localhost na porta :4200
 <strong> Os estilos o app estão ``.sass``, por este motivo pode ocorrer que o app de errô ao iniciar caso esteja usando um SO Linux, para resolver isso, execute o comando: </strong>
