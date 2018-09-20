@@ -8,7 +8,7 @@ Este projeto foi criado para o teste de Front End na iMedicina, ele faz a integr
 - Criar um post 
 - Excluir um post
 
-### Iniciando as configurações necessárias para rodar o App
+### Iniciando as configurações para acesso a Api
 #### Iniciando o Wordpress 
   * Este App foi testado com uma versão local instalada do Wordpress, que pode ser baixada [aqui](https://wordpress.org/download/).´
 
@@ -55,10 +55,33 @@ Logo abaixo você deverá adicionar essas linhas no php
 define('JWT_AUTH_SECRET_KEY', 'senha-secreta-gerada-pelo-jwt-para-cada-site');
 define('JWT_AUTH_CORS_ENABLE', true);
 ```
-Para gerar 0 key de acesso, vá nesse [link](https://api.wordpress.org/secret-key/1.1/salt/) , e copie a string da segunda linha 
+Para gerar o key de acesso, vá nesse [link](https://api.wordpress.org/secret-key/1.1/salt/) , e copie a string da segunda linha 
 você verá algo assim:
 
 define('AUTH_KEY',         't;TbCr+<0m5}x&<$]5<Ce/RCG3mg5{f.GvS @XV|nWCq=f?Bm@G6r4-N_JPCOz(x');
 define('SECURE_AUTH_KEY',  '``gG2t{>j+bA|1+kn|>-`4h&f-I=,WuHaPs)](f@l?4`9kv+DP6q-{G.3dJ[A6*a]l``'); 
-copie somente o conteúdo destacado como no <strong>EXEMPLO</strong> acima
 
+copie somente o conteúdo destacado como no <strong>EXEMPLO</strong> acima.
+
+Pronto, com estes passos você já pode acessar a Api e receber um token de autenticação.
+
+### Iniciando as configurações rodar o App
+#### Iniciando com o Angular CLI
+É indispensável ter instalado o [NodeJs](https://nodejs.org/en/download) em sua máquina para rodar o App.
+com este instalado rode o comando:
+```sh
+npm install -g @angular/cli
+```
+#### Após instalado execute o App
+- Faça um clone desse repositório em uma pasta de sua preferência
+- Entre nessa pasta e rode o comando ``npm install`` para instalar todas as dependências que o app precisa
+- Rode o comando ``ng serve --open``
+- O App abrirá em localhost na porta :4200
+<strong> Os estilos o app estão ``.sass``, por este motivo pode ocorrer que o app de errô ao iniciar caso esteja usando um SO Linux, para resolver isso, execute o comando:
+  
+```sh
+npm rebuild node-sass --force
+````
+Ele vai forçar a construção do estilo do app. 
+
+## Fim
