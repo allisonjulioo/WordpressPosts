@@ -1,47 +1,41 @@
-<div class="login-form">
-    <div class="left">
-      <div class="content">
-          <img _ngcontent-c2="" alt="" src="./assets/img/logo-gif.gif" width="140">
-        <span class="text-white"> Otimize sua gestão e conquiste mais pacientes </span>
-      </div>
-    </div>
-    <div class="right">
-      <div class="content">
-        <!-- <h2>Faça seu login</h2> -->
-        <mat-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason" name="season">
-          <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season" color="primary">
-            {{season}}
-          </mat-radio-button>
-        </mat-radio-group>
-        <div class="site-url"> 
-          <strong>{{favoriteSeason}}://</strong>
-          <div class="form-stack">
-              <input  [(ngModel)]='mainUrl' id="site-url" type="text"  name="url" autocomplete="on"
-                autofocus placeholder="www.seusite.com.br" (ngModelChange)="urlSite($event)">
-            </div>
-        </div>
-  
-  
-  
-  
-        <form id="form-login" method="post" [formGroup]="f" novalidate>
-          <div class="form-element form-stack">
-            <label for="username-login" class="form-label">Login</label>
-            <input  [(ngModel)]='user.login' formControlName="username" id="username-login" type="text"  name="name" autocomplete="on"
-              autofocus>
-          </div>
-          <div class="form-element form-stack">
-            <label for="password-login" class="form-label">Senha</label>
-            <input [(ngModel)]='user.password' formControlName="password" id="password-login" type="password" name="password">
-          </div>
-          <div class="form-element form-submit">
-            <button mat-flat-button [disabled]="f.invalid" (click)="login()">Entrar</button>
-          </div>
-        </form>
-  
-  
-  
-  
-      </div>
+<div class="login-form" ngclass="'success' f.invalid ">
+  <div class="left">
+    <div class="content">
+      <img _ngcontent-c2="" alt="" src="./assets/img/logo-gif.gif" width="140">
+      <span class="text-white"> Otimize sua gestão e conquiste mais pacientes </span>
     </div>
   </div>
+  <div class="right">
+    <div class="content">
+      <!-- <h2>Faça seu login</h2> -->
+      <mat-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason" name="season">
+        <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season" color="primary">
+          {{season}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <div class="site-url">
+        <strong>{{favoriteSeason}}://</strong>
+        <div class="form-stack">
+          <input [(ngModel)]='mainUrl' id="site-url" type="text" name="url" autocomplete="on" autofocus placeholder="www.seusite.com.br"
+            (ngModelChange)="urlSite($event)">
+        </div>
+      </div>
+
+      <form id="form-login" method="post" [formGroup]="f" novalidate>
+        <div class="form-element form-stack">
+          <label for="username-login" class="form-label">Login</label>
+          <input [(ngModel)]='user.login' formControlName="username" id="username-login" type="text" name="name" autocomplete="on"
+            autofocus>
+        </div>
+        <div class="form-element form-stack">
+          <label for="password-login" class="form-label">Senha</label>
+          <input [(ngModel)]='user.password' formControlName="password" id="password-login" type="password" name="password">
+        </div>
+        <div class="form-element form-submit">
+          <button mat-flat-button [disabled]="f.invalid" (click)="login()">Entrar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

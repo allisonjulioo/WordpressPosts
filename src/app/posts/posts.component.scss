@@ -33,6 +33,14 @@
       bottom: 20px;
       margin-left: 15px;
     }
+    .content {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      p{
+        color: red;
+      }
+    }  
     .mat-card-header{
       display: flex;
       .mat-card-title{

@@ -29,7 +29,7 @@
             min-width: 300px;
             max-width: 300px;
             text-align: center;
-            animation: flipInY .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            animation: fadeIn .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
         }
            mat-card-actions{
                button{

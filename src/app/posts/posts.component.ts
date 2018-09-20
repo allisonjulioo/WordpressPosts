@@ -29,11 +29,12 @@ export class PostsComponent {
   categoriesList: string[] = ['Saúde', 'Beleza', 'Bem estar', 'Cuidados', 'Dicas'];
   action: 'ok'
 
-  constructor( private wpApiPosts: WpApiPosts, 
-               public snackBar: MatSnackBar, 
-               private data: DataService,
-               private router : Router) {
+  constructor(private wpApiPosts: WpApiPosts,
+    public snackBar: MatSnackBar,
+    private data: DataService,
+    private router: Router) {
     this.getPosts();
+    
   }
 
 

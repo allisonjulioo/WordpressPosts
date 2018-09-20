@@ -74,7 +74,7 @@ export class PostPageComponent implements OnInit {
       'Authorization': 'Bearer ' + this.token
     });
 
-    this.wpApiPosts.create(this.posts, { headers: headers })
+  this.wpApiPosts.create(this.posts, { headers: headers })
       .toPromise()
       .then(response => {
         this.router.navigate(['posts-page']);
@@ -82,6 +82,9 @@ export class PostPageComponent implements OnInit {
           duration: 2000,
         });
       })
+      this.posts.title = ''
+      this.posts.content = ''
+      this.posts.url = ''
   }
   getPost($event) {
     this.posts = $event;

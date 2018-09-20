@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PostPageComponent } from './post-page/post-page.component';
-import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NgxEditorModule } from 'ngx-editor';
@@ -49,6 +48,7 @@ import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { SearchByNamePipe } from './filterdata.pipe';
 
 export function WpApiLoaderFactory(http: Http) {
   return new WpApiStaticLoader(http, 'http://'+environment.api_url+'/wp-json/wp/v2/', '');
@@ -58,11 +58,11 @@ export function WpApiLoaderFactory(http: Http) {
   declarations: [
     AppComponent,
     PostPageComponent,
-    HomeComponent,
     NavHeaderComponent,
     PostsComponent,
     LoginComponent,
     UsersComponent,
+    SearchByNamePipe,
     
   ],
   imports: [

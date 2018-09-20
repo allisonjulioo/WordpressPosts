@@ -8,10 +8,14 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    
+    <!-- <mat-form-field>
+      <input matInput #txtFname placeholder="Busque por um artigo" name="filtro">
+    </mat-form-field> -->
   </form>
 
   <h1 class="mat-h1" *ngIf="selectedcategory"><strong>Exibindo por categoria: </strong> <span *ngFor="let cat of selectedcategory">{{cat}},
-      </span></h1>
+    </span></h1>
   <mat-card class="dashboard-card" *ngFor="let post of posts">
     <mat-card-header>
       <mat-card-title>{{ post.title.rendered }}</mat-card-title>
@@ -28,7 +32,7 @@
     <img matCardImage src="./assets/img/photo.jpg">
 
     <mat-card-content class="dashboard-card-content">
-      <div [innerHTML]="post.content.rendered"></div>
+      <div [innerHTML]="post.content.rendered" class="content"></div>
     </mat-card-content>
     <mat-card-actions align="start">
       <a mat-stroked-button [href]="post.link" color="primary" target="_blank">Visualizar no blog</a>
@@ -36,21 +40,3 @@
     </mat-card-actions>
   </mat-card>
 </div>
-
-<!-- <ng-template #postEdit>
-    <app-post-edit [post]='editingPost' [token]='token' (finish)='editingPost = null; getPosts()'></app-post-edit>
-  </ng-template> -->
-
-<ol>
-  <li>
-    <mat-form-field>
-      <input matInput [(ngModel)]="name" placeholder="What's your name?">
-    </mat-form-field>
-  </li>
-  <li>
-    <button mat-raised-button (click)="openDialog()">Pick one</button>
-  </li>
-  <li *ngIf="animal">
-    You chose: <i>{{animal}}</i>
-  </li>
-</ol>

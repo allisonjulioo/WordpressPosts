@@ -34,6 +34,8 @@ $error: #d9534f;
     margin-top: -5px;
     width: 100%;
     padding: 5px 1px;
+    
+
   }
 }
 input {
@@ -73,6 +75,9 @@ input {
       -webkit-box-shadow: 0 0 0 30px $theme-signup-background inset;
       -webkit-text-fill-color: $theme-light;
     }
+    &::placeholder{
+      color: #c5c5c5 !important;
+    }
   }
   a {
     color: $theme-signup;
@@ -81,7 +86,7 @@ input {
 .right {
   background: $theme-login-background;
   width: 400px;
-  right: 20%;
+  right: 10%;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
