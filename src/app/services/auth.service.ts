@@ -24,7 +24,7 @@ export class AuthService {
   check(): boolean {
     return localStorage.getItem('user') ? true : false;
   }
-  login(credentials: { email: string, password: string }): Observable<boolean> {
+  login(credentials: { registration: string, password: string }): Observable<boolean> {
     return this.http.post<any>(`http://${environment.api_url}/wp-json/jwt-auth/v1/token`, credentials)
       .do(data => {
         this.token = data['token'];
