@@ -88,13 +88,5 @@ Lembrando que o Wordpress tem que estar executando para que o App pegue as crede
 ## Fim
 
 
-## Respostas do questionário:
-#### Quais são os destaques do seu estilo de escrita de código / lógica?
-  O código tem uma complexidade intermediária, estou pegando trazendo da Api o token de autenticação, fornecido pelo plugin JWT (Jason Web Token), e credencionando o usuário para que ele posssa alterar os posts, para isso é necessário que ele instale os dois plugins mencionandos acima e faça as configurações necessárias (As configurações são bem simples) e faça o login informando ``ul do site`` ``usuário`` e ``senha``, inicialmente eu pensei em criar um olugin do Wordpress para tal função, mas em uma breve pesquisa pela biblioteca de plugins do Wordpress, vi que existia uma gama enorme dos mesmo, o trabalho era só estudar o funcionamento e o que ele te retornava, e o mais legal é que são bem leves e não atrapalham a renderização do site.
-  
-#### O que poderia ter sido feito de uma maneira melhor?
-Um estudo mais detalhado da documentação do Wp-api, e um planejamento melhor da plataforma do Front, pois inicialmente comecei a desenvolver no Ionic e Cordova, mas tive muitos problemas com a edição de posts e o rich text editor, então tive que recomeçar utilizando o Angular 6 e o Material design do Angular como estilo de pagina.
 
-#### Quaisquer outras notas que julgar relevantes para a avaliação.
-O prejeto em si é bem interessante, não deu para fazer tudo que eu planejei no começo por ter tido um atraso de quase quatro dias, por ter que refazer o projeto, resultado de problemas com o Ionic. Gostei da interface, claro que dá para melhorar. Um grande problema é que tenho que entregar sem fazer mais testes. Enfim boa sorte para mim.
 
