@@ -1,6 +1,6 @@
 # Aplicativo de posts Wordpress
 
-Este projeto foi criado para o teste de Front End na iMedicina, ele faz a integração do [Angular v6]() com o [Wordpress](https://wordpress.org). 
+Este projeto faz a integração do [Angular v6]() com o [Wordpress](https://wordpress.org). 
 
 #### Este app consegue fazer:
 - Listagem de posts
