@@ -47,11 +47,12 @@ export class PostsComponent {
 
   getPosts() {
     this.posts = [];
-    this.rest.getPosts().subscribe((data: {}) => {
-      console.log(data);
+    this.rest.getPosts().subscribe((data: {}) => { 
       this.posts = data;
-      console.log(this.posts.pagination)
     });
+    // this.rest.getDraftPosts().subscribe((data2: {}) => { 
+    //   this.posts = data2;
+    // });
   }
   updatePost() {
     this.router.navigate(['/post-edit']);

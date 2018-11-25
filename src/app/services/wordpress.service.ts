@@ -23,8 +23,12 @@ export class WordpressService {
     return body || { };
   }
   getPosts(): Observable<any> {
-    return this.http.get(this.endpoint + 'works?_embed').pipe(
-      map(this.extractData));
+    return this.http.get(this.endpoint + 'works?_embed', this.httpOptions) 
+    .pipe(map(this.extractData));
+  }
+  getDraftPosts(): Observable<any> {
+    return this.http.get(this.endpoint + 'works?status=draft', this.httpOptions) 
+    .pipe(map(this.extractData));
   }
 
   getPost(id): Observable<any> {
