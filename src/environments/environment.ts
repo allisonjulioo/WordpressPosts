@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  api_url: localStorage.getItem('url'),
+  api_url: 'localhost/alink',
   token: localStorage.getItem('token')
 };
 

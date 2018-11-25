@@ -2,9 +2,9 @@ import { environment } from './../../environments/environment';
 import { WordpressService } from './../services/wordpress.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { WpApiPosts } from 'wp-api-angular';
+import { WpApiPosts, WpApiMedia } from 'wp-api-angular';
 import { Headers } from '@angular/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { DataService } from '../services/data.service';
 import { Posts } from '../posts/posts';
@@ -19,12 +19,7 @@ export class PostPageComponent implements OnInit {
 
   @Input() token = localStorage.getItem('token');
 
-  posts = {
-    title: '',
-    content: '',
-    url: '',
-    status: 'publish'
-  }
+  posts: any = {};
   public postEdit: Posts;
 
   apiUrl = environment.api_url
@@ -53,40 +48,38 @@ export class PostPageComponent implements OnInit {
   }
   constructor(private wp: WordpressService,
     private http: HttpClient,
-    private wpApiPosts: WpApiPosts,
+    private rest: WordpressService,
     private router: Router,
     public snackBar: MatSnackBar,
-    private data: DataService) {
+    private data: DataService,
+    private route: ActivatedRoute)
+     {
   }
 
   ngOnInit() {
-    this.data.currentPost.subscribe(posts => this.postEdit = posts);
-    if (this.postEdit.id) {
-      this.posts.title = this.postEdit.title.rendered;
-      this.posts.content = this.postEdit.content.rendered;
-      this.posts.url = this.postEdit.link;
+    this.rest.getPost(this.router.snapshot.params['id']).subscribe((data: {}) => {
+      console.log(data);
+      this.posts = data;
+    });
+  }
+  addPost() {
+    if (!this.posts.id) {
+      this.rest.addPost(this.posts).subscribe((result) => {
+        this.router.navigate(['posts-page']);
+      }, (err) => {
+        console.log(err);
+      });
+    }
+    else {
+      this.updatePost()
     }
   }
-
-
-  createPost() {
-    let headers: Headers = new Headers({
-      'Authorization': 'Bearer ' + this.token
+  updatePost() {
+    this.rest.updatePost(this.router.snapshot.params['id'], this.posts).subscribe((result) => {
+      this.router.navigate(['posts']);
+    }, (err) => {
+      console.log(err);
     });
+  }
 
-  this.wpApiPosts.create(this.posts, { headers: headers })
-      .toPromise()
-      .then(response => {
-        this.router.navigate(['posts-page']);
-        this.snackBar.open('Post criado com sucesso!', this.action, {
-          duration: 2000,
-        });
-      })
-      this.posts.title = ''
-      this.posts.content = ''
-      this.posts.url = ''
-  }
-  getPost($event) {
-    this.posts = $event;
-  }
 }

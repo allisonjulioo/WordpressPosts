@@ -27,7 +27,7 @@
     height: 280px;
     float: left;
     margin: 0 20px 20px 0;
-    animation: zoomInDown .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    animation: bounceIn .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
     a{
       position: absolute;
       bottom: 20px;

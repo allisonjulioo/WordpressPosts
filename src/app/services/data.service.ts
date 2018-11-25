@@ -12,8 +12,6 @@ public dataPost = new BehaviorSubject(this.postEdit);
 currentPost = this.dataPost.asObservable();
 
   constructor() {
-    this.postEdit.title = ''
-    this.postEdit.content = ''
    }
 
    updatePost(postEdit : Posts){

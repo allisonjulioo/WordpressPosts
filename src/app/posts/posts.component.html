@@ -16,27 +16,38 @@
 
   <h1 class="mat-h1" *ngIf="selectedcategory"><strong>Exibindo por categoria: </strong> <span *ngFor="let cat of selectedcategory">{{cat}},
     </span></h1>
-  <mat-card class="dashboard-card" *ngFor="let post of posts">
+  <mat-card class="dashboard-card" *ngFor="let post of posts; let t of index" [style.animation-delay.ms]="(i*100 )">
     <mat-card-header>
-      <mat-card-title>{{ post.title.rendered }}</mat-card-title>
-      <mat-card-subtitle>Publicado</mat-card-subtitle>
+      <mat-card-title>{{ post.title.rendered }} </mat-card-title>
+      <mat-card-subtitle>{{ post.status }}</mat-card-subtitle>
       <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item *ngIf='token' (click)='updatePost(post)'>Editar</button>
-        <button mat-menu-item *ngIf='token' (click)='deletePost(post.id, $index)'>Excluir</button>
+        <button mat-menu-item *ngIf='token' (click)='updatePost()'>Editar</button>
+        <button mat-menu-item *ngIf='token' (click)='deletePost(post.id)'>Excluir</button>
       </mat-menu>
     </mat-card-header>
-    <!-- <img matCardImage [src]="post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url"> -->
-    <img matCardImage src="./assets/img/photo.jpg">
-
+    <img matCardImage [src]="post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url">
+    <!-- <img matCardImage src="./assets/img/photo.jpg">
+      <code><pre>{{post._embedded | json}}</pre></code> -->
     <mat-card-content class="dashboard-card-content">
-      <div [innerHTML]="post.content.rendered" class="content"></div>
+      <div [innerHTML]="post.content.rendered | slice:0:136" class="content"></div>
     </mat-card-content>
     <mat-card-actions align="start">
       <a mat-stroked-button [href]="post.link" color="primary" target="_blank">Visualizar no blog</a>
       <mat-card-title><span *ngIf="post.status=='publish'" class="status">{{ post.date_gmt | date }} </span></mat-card-title>
     </mat-card-actions>
   </mat-card>
+
 </div>
+<app-pagination
+[count]="someCountVar"
+[page]="somePageVar"
+[perPage]="somePerPageVar"
+[pagesToShow]="5"
+[loading]="someLoadingVar"
+(onPrev)="prevPage()"
+(onNext)="nextPage()"
+(onPage)="goToPage($event)">
+</app-pagination>

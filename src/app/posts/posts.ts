@@ -1,8 +1,8 @@
 export class Posts {
     id: number;
-    title: '';
-    content: '';
-    link: '';
+    title:{rendered: string};
+    content:{rendered: string};
+    link:string;
     date: string;
     slug: string;
 }

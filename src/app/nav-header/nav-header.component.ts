@@ -45,6 +45,9 @@ export class NavHeaderComponent implements OnInit {
         else if (event.url === '/posts-page') {
           this.title = 'Todos os posts'
         }
+        else{
+          this.title = 'Todos os posts'
+        }
 
       });
   }

@@ -47,8 +47,10 @@ import { Http } from '@angular/http';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { AuthService } from './services/auth.service';
+import { PaginationService} from './services/pagination.service'
 import { AuthGuard } from './guards/auth.guard';
 import { SearchByNamePipe } from './filterdata.pipe';
+import { PaginationComponent } from './pagination/pagination.component';
 
 export function WpApiLoaderFactory(http: Http) {
   return new WpApiStaticLoader(http, 'http://'+environment.api_url+'/wp-json/wp/v2/', '');
@@ -63,6 +65,7 @@ export function WpApiLoaderFactory(http: Http) {
     LoginComponent,
     UsersComponent,
     SearchByNamePipe,
+    PaginationComponent,
     
   ],
   imports: [
