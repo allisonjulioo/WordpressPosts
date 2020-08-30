@@ -2,11 +2,10 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-
 export const environment = {
   production: false,
-  api_url: 'localhost/alink',
-  token: localStorage.getItem('token')
+  api_url: localStorage.getItem('url'),
+  token: localStorage.getItem('token'),
 };
 
 /*

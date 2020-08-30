@@ -1,35 +1,33 @@
-
-
-:hostapp-posts{
+:hostapp-posts {
   @import 'variables.scss';
-  $theme-primary:  map-get($primary, 800);
+  $theme-primary: map-get($primary, 800);
 
   .mat-h1 {
     font-size: 15px;
     color: $theme-primary;
-    span{
-      padding: 0 4px; 
+    span {
+      padding: 0 4px;
     }
-    strong{
+    strong {
       text-transform: uppercase;
     }
-}
-  .mat-card-image{
+  }
+  .mat-card-image {
     object-fit: cover;
     height: 150px;
     margin-bottom: 0;
-  } 
+  }
   .mat-card {
     position: relative;
     z-index: 0;
     max-width: 300px;
     min-width: 300px;
-    height: 280px;
+    height: auto;
+    display: block;
     float: left;
     margin: 0 20px 20px 0;
-    animation: bounceIn .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    a{
-      position: absolute;
+    animation: fadeIn 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    a {
       bottom: 20px;
       margin-left: 15px;
     }
@@ -37,32 +35,16 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      p{
+      p {
         color: red;
+        margin: 0 !important;
       }
-    }  
-    .mat-card-header{
+    }
+    .mat-card-header {
       display: flex;
-      .mat-card-title{
+      .mat-card-title {
         display: table;
         float: left;
-        margin-left: -8px;
-
-      }
-      .mat-card-subtitle{
-        float: left;
-        margin: 2px 21px;
-        font-size: 12px;
-        font-style: italic;
-        height: 22px;
-        padding: 3px 10px 0;
-        position: absolute;
-        bottom: 100px;
-        border-radius: 2px;
-        right: 0;
-        background: #e4176a;
-        color: #fff;
-  
       }
     }
     .more-button {
@@ -74,15 +56,28 @@
       width: 25px;
       line-height: 24px;
       border-radius: 2px;
-      .material-icons{
+      .material-icons {
         font-size: 20px;
       }
     }
-    &:hover{
-      .status{
+    &:hover {
+      .status {
         opacity: 1;
-        transition: all .3s linear;
+        transition: all 0.3s linear;
       }
+    }
+    .mat-card-subtitle {
+      float: left;
+      margin: 2px 14px;
+      font-size: 12px;
+      font-style: italic;
+      height: 18px;
+      padding: 3px 10px 0;
+      top: 100px;
+      border-radius: 2px;
+      right: 0;
+      background: #199ad5;
+      color: #fff;
     }
     .status {
       opacity: 1;
@@ -90,12 +85,8 @@
       font-size: 12px;
       bottom: 30px;
       right: 25px;
-      color: rgba($theme-primary, .4);
-      transition: all .1s ease-out;
-
+      color: rgba($theme-primary, 0.4);
+      transition: all 0.1s ease-out;
     }
   }
-  
-
-
 }

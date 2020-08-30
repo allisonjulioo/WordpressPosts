@@ -1,69 +1,72 @@
-import { environment } from './../../environments/environment';
-import { WordpressService } from './../services/wordpress.service';
-import { Router } from '@angular/router';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { WpApiPages } from 'wp-api-angular';
-import { Headers } from '@angular/http';
-import { MatSnackBar } from '@angular/material';
-import { Posts } from './posts';
-import { DataService } from '../services/data.service';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
+import { WpApiPages } from 'wp-api-angular';
+import { DataService } from '../services/data.service';
+import { WordpressService } from './../services/wordpress.service';
+import { Posts } from './posts';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  styleUrls: ['./posts.component.scss'],
 })
 export class PostsComponent {
-
   @Input() token = localStorage.getItem('token');
 
   EditPost = null;
 
   public postEdit: Posts;
 
-  posts: any = [{
-    _embedded:  []
-  }];
+  posts: any = [
+    {
+      _embedded: [],
+    },
+  ];
 
   category = new FormControl();
   selectedcategory: string;
-  categoriesList: string[] = ['Saúde', 'Beleza', 'Bem estar', 'Cuidados', 'Dicas'];
-  action: 'ok'
+  categoriesList: string[] = [
+    'Saúde',
+    'Beleza',
+    'Bem estar',
+    'Cuidados',
+    'Dicas',
+  ];
+  action: 'ok';
   WpApiMedia: any;
   medias: any;
 
-  constructor(private wpApiPages: WpApiPages,
+  constructor(
+    private wpApiPages: WpApiPages,
     public snackBar: MatSnackBar,
     private http: HttpClient,
     public rest: WordpressService,
     private data: DataService,
-    private router: Router) {
+    private router: Router
+  ) {
     this.getPosts();
-
   }
 
   getPosts() {
     this.posts = [];
-    this.rest.getPosts().subscribe((data: {}) => { 
+    this.rest.getPosts().subscribe((data: {}) => {
       this.posts = data;
     });
-    // this.rest.getDraftPosts().subscribe((data2: {}) => { 
-    //   this.posts = data2;
-    // });
   }
-  updatePost() {
-    this.router.navigate(['/post-edit']);
+  updatePost(id: string) {
+    this.router.navigate(['/post-edit', id]);
   }
-  deletePost(id) {
-    this.rest.deletePost(id)
-      .subscribe(res => {
+  deletePost(id: string) {
+    this.rest.deletePost(id).subscribe(
+      (res) => {
         this.getPosts();
-      }, (err) => {
+      },
+      (err) => {
         console.log(err);
       }
-      );
+    );
   }
 }

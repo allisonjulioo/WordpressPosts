@@ -1,9 +1,7 @@
-
 @import 'variables.scss';
 
-
 $theme-signup: map-get($text-color, 100);
-$theme-signup-darken: #0288D1;
+$theme-signup-darken: #0288d1;
 $theme-signup-background: #fff;
 $theme-login: map-get($primary, 800);
 $theme-login-darken: theme-signup;
@@ -14,28 +12,26 @@ $font-default: 'Exo';
 
 $success: #5cb85c;
 $error: #d9534f;
-.login-form{    
+.login-form {
   display: table;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
-.site-url{
+.site-url {
   display: flex;
   align-items: center;
   margin: 18px 0 4px;
-  .form-stack{
+  .form-stack {
     width: 100%;
   }
-  strong{
+  strong {
     padding: 0 4px 0 5px;
   }
-  input{
+  input {
     margin-top: -5px;
     width: 100%;
     padding: 5px 1px;
-    
-
   }
 }
 input {
@@ -47,8 +43,8 @@ input {
   margin-top: 0.1em;
   -webkit-text-fill-color: $theme-login;
 
-  &::placeholder{
-    color: map-get($primary, 400);
+  &::placeholder {
+    color: lighten(#eee, 40%);
   }
 }
 
@@ -66,8 +62,9 @@ input {
   input {
     border-bottom: 1px solid $theme-light;
     color: $theme-light;
-    
-    &:focus, &:active {
+
+    &:focus,
+    &:active {
       border-color: $theme-signup;
       color: $theme-signup;
     }
@@ -75,7 +72,7 @@ input {
       -webkit-box-shadow: 0 0 0 30px $theme-signup-background inset;
       -webkit-text-fill-color: $theme-light;
     }
-    &::placeholder{
+    &::placeholder {
       color: #c5c5c5 !important;
     }
   }
@@ -98,7 +95,8 @@ input {
   }
   input {
     border-bottom: 1px solid $theme-dark;
-    &:focus, &:active {
+    &:focus,
+    &:active {
       border-color: $theme-login;
     }
     &:-webkit-autofill {
@@ -144,30 +142,29 @@ input {
   flex-direction: column;
 }
 
-
-strong{
+strong {
   font-weight: bold;
-  color: #e4176a;
+  color: #199ad5;
 }
 
 .checkbox:checked:after {
   outline: none;
-	content: '\2713';
+  content: '\2713';
   color: $theme-signup;
-	font-size: 1.4em;
+  font-size: 1.4em;
   font-weight: 900;
-	position: absolute;
-	top: -4px;
-	left: 4px;
+  position: absolute;
+  top: -4px;
+  left: 4px;
 }
-.mat-flat-button{
-  background-color: #e4176a;
+.mat-flat-button {
+  background-color: #199ad5;
   color: $theme-signup;
 }
 .form-checkbox {
   display: flex;
   align-items: center;
-  
+
   label {
     margin: 0 6px 0;
     font-size: 0.72em;
@@ -175,17 +172,17 @@ strong{
 }
 
 @media only screen and (max-width: 768px) {
-
-  .signup-info, .login-info {
+  .signup-info,
+  .login-info {
     display: none;
   }
-  .left{
+  .left {
     width: 100%;
     height: 200px;
     position: relative;
     text-align: center;
   }
-  .right{
+  .right {
     position: relative;
     width: 100%;
     background: transparent;
@@ -201,10 +198,10 @@ strong{
     margin: 2px auto;
   }
 }
-  .example-radio-button {
-	margin: 5px;
-  }
-  
-  .example-selected-value {
-	margin: 15px 0;
-  }
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}

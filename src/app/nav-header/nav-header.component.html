@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container" >
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
     color="primary"
@@ -6,27 +6,42 @@
     fixedInViewport="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)">
-    
+    [opened]="!(isHandset$ | async)"
+  >
     <mat-toolbar color="light">
-      <img width="140" src="http://imedicina.com.br/wp-content/themes/imedicina-theme/images/xlogo_horizontal-cinza-2.png.pagespeed.ic.zD6GuUsO4N.webp" alt="">
-    
+      <img height="40" src="./assets/img/social.png" alt="" />
+      <small>Social posts</small>
     </mat-toolbar>
     <mat-nav-list>
-      
-      <button mat-flat-button routerLink="post-add" class="add-new-post post-btn"  [routerLinkActive]="['is-active']">
+      <button
+        mat-flat-button
+        routerLink="post-add"
+        class="add-new-post post-btn"
+        [routerLinkActive]="['is-active']"
+      >
         <mat-icon>add_circle</mat-icon>
         <span>Novo post</span>
       </button>
-      <button mat-flat-button routerLink="posts-page" color="light" class="post-btn" [routerLinkActive]="['is-active']">
-        <mat-icon>chrome_reader_mode </mat-icon> 
+      <button
+        mat-flat-button
+        routerLink="posts-page"
+        color="light"
+        class="post-btn"
+        [routerLinkActive]="['is-active']"
+      >
+        <mat-icon>chrome_reader_mode </mat-icon>
         <span>Todos os posts</span>
       </button>
-      <button mat-flat-button routerLink="third-page" color="light" class="post-btn" [routerLinkActive]="['is-active']">
+      <button
+        mat-flat-button
+        routerLink="third-page"
+        color="light"
+        class="post-btn"
+        [routerLinkActive]="['is-active']"
+      >
         <mat-icon>scatter_plot</mat-icon>
         <span>Analytcs</span>
       </button>
-
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -36,17 +51,20 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="isHandset$ | async"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <mat-chip-list>
         <h1 class="mat-h1" *ngIf="this.router === '/post-edit'"></h1>
-        {{title}}
-          <button mat-flat-button color="light" class="logout" (click)="logout()">Sair <mat-icon>keyboard_arrow_right</mat-icon></button>
-        </mat-chip-list>
+        {{ title }}
+        <button mat-flat-button color="light" class="logout" (click)="logout()">
+          Sair <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+      </mat-chip-list>
     </mat-toolbar>
     <router-outlet>
-      <app-post-page  *ngIf='token' [token]='token'></app-post-page>
+      <app-post-page *ngIf="token" [token]="token"></app-post-page>
     </router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

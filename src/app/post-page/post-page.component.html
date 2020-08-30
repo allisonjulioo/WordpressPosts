@@ -1,9 +1,8 @@
 <div class="edit">
-
   <mat-label>
     <mat-card-content>
       <mat-card>
-        <app-ngx-editor [config]="editorConfig" [(ngModel)]="posts.content">
+        <app-ngx-editor [config]="editorConfig" [(ngModel)]="content">
         </app-ngx-editor>
       </mat-card>
     </mat-card-content>
@@ -11,32 +10,72 @@
       <mat-card>
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Titulo do post" [(ngModel)]="posts.title" name="title"></textarea>
+            <textarea
+              matInput
+              placeholder="Titulo do post"
+              [(ngModel)]="title"
+              name="title"
+            ></textarea>
           </mat-form-field>
         </form>
         <form class="example-form">
-
           <mat-form-field class="example-full-width">
-            <mat-card-subtitle matPrefix>{{apiUrl}}/ </mat-card-subtitle>
-            <input type="tel" matInput value="post-blog" class="input" [(ngModel)]="posts.url" name="urlPost">
-            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <input
+              type="tel"
+              matInput
+              value="post-blog"
+              class="input"
+              [(ngModel)]="posts.link"
+              name="urlPost"
+            />
+            <button
+              mat-button
+              *ngIf="value"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="value = ''"
+            >
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
         </form>
       </mat-card>
     </mat-card-content>
-    <h3 *ngIf='token == null'> Please, authorize to create a post </h3>
+    <h3 *ngIf="token == null">Please, authorize to create a post</h3>
   </mat-label>
 
   <mat-card-content class="actions">
     <mat-card>
-      <img matCardImage src="./assets/img/photo.jpg">
+      <img matCardImage [src]="imageUrl" />
       <mat-card-actions align="start">
         <mat-card-title><span>Ações</span></mat-card-title>
-        <button mat-raised-button color="primary" target="_blank" [disabled]="!posts.content" >Visualizar no Blog</button><br>
-        <button mat-raised-button color="primary" target="_blank" [disabled]="!posts.content" (click)="addPost()">Salvar</button><br>
-        <button mat-stroked-button color="warn" target="_blank" [disabled]="!posts.content" (click)="posts.content = null">Excluir</button>
+        <button
+          mat-raised-button
+          color="primary"
+          target="_blank"
+          [disabled]="!posts.content"
+        >
+          Visualizar no Blog</button
+        ><br />
+        <button
+          mat-raised-button
+          color="primary"
+          target="_blank"
+          [disabled]="!posts.content"
+          (click)="addPost()"
+        >
+          Salvar</button
+        ><br />
+        <button
+          mat-stroked-button
+          color="warn"
+          target="_blank"
+          [disabled]="!posts.content"
+          (click)="posts.content = null"
+        >
+          Excluir
+        </button>
       </mat-card-actions>
     </mat-card>
   </mat-card-content>

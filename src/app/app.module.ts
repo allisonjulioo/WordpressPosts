@@ -1,62 +1,53 @@
-import { environment } from './../environments/environment';
-import { ROUTES } from './app.routes';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { PostPageComponent } from './post-page/post-page.component';
-import { RouterModule, Routes } from '@angular/router';
-
-import { NgxEditorModule } from 'ngx-editor';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-
-import { HttpClientModule } from '@angular/common/http'; 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavHeaderComponent } from './nav-header/nav-header.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { PostsComponent } from './posts/posts.component';
-
-
-import {  MatToolbarModule, 
-          MatButtonModule, 
-          MatSidenavModule, 
-          MatIconModule, 
-          MatListModule, 
-          MatGridListModule,
-          MatCardModule, 
-          MatMenuModule,
-          MatChipsModule,
-          MatSelectModule, 
-          MatInputModule,
-          MatRadioModule,
-          MatSnackBarModule,
-          MatProgressBarModule,
-          MatDialogModule
-          } 
-from '@angular/material';
-
-import {
-  WpApiModule,
-  WpApiLoader,
-  WpApiStaticLoader,
-  
-} from 'wp-api-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http } from '@angular/http';
-import { LoginComponent } from './login/login.component';
-import { UsersComponent } from './users/users.component';
-import { AuthService } from './services/auth.service';
-import { PaginationService} from './services/pagination.service'
-import { AuthGuard } from './guards/auth.guard';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatProgressBarModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatToolbarModule,
+} from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { NgxEditorModule } from 'ngx-editor';
+import { WpApiLoader, WpApiModule, WpApiStaticLoader } from 'wp-api-angular';
+import { environment } from './../environments/environment';
+import { AppComponent } from './app.component';
+import { ROUTES } from './app.routes';
 import { SearchByNamePipe } from './filterdata.pipe';
+import { AuthGuard } from './guards/auth.guard';
+import { LoginComponent } from './login/login.component';
+import { NavHeaderComponent } from './nav-header/nav-header.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { PostPageComponent } from './post-page/post-page.component';
+import { PostsComponent } from './posts/posts.component';
+import { AuthService } from './services/auth.service';
+import { UsersComponent } from './users/users.component';
 
+// tslint:disable-next-line: deprecation
 export function WpApiLoaderFactory(http: Http) {
-  return new WpApiStaticLoader(http, 'http://'+environment.api_url+'/wp-json/wp/v2/', '');
+  return new WpApiStaticLoader(
+    http,
+    `${environment.api_url}/wp-json/wp/v2/`,
+    ''
+  );
 }
 @NgModule({
-
   declarations: [
     AppComponent,
     PostPageComponent,
@@ -66,7 +57,6 @@ export function WpApiLoaderFactory(http: Http) {
     UsersComponent,
     SearchByNamePipe,
     PaginationComponent,
-    
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
@@ -89,22 +79,18 @@ export function WpApiLoaderFactory(http: Http) {
     MatInputModule,
     MatChipsModule,
     MatSelectModule,
-    WpApiModule.forRoot({ // <---
+    WpApiModule.forRoot({
+      // <---
       provide: WpApiLoader,
-      useFactory: (WpApiLoaderFactory),
-      deps: [Http]
+      useFactory: WpApiLoaderFactory,
+      deps: [Http],
     }),
     MatRadioModule,
     MatSnackBarModule,
     MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
   ],
-  providers: [
-    AuthService,
-    AuthGuard
-  ],
-  bootstrap: [AppComponent]
-  
+  providers: [AuthService, AuthGuard],
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}
