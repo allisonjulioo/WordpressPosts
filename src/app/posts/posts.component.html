@@ -80,14 +80,3 @@
     </mat-card-actions>
   </mat-card>
 </div>
-<app-pagination
-  [count]="someCountVar"
-  [page]="somePageVar"
-  [perPage]="somePerPageVar"
-  [pagesToShow]="5"
-  [loading]="someLoadingVar"
-  (onPrev)="prevPage()"
-  (onNext)="nextPage()"
-  (onPage)="goToPage($event)"
->
-</app-pagination>

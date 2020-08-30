@@ -1,63 +1,54 @@
-import { AuthService } from './../services/auth.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/filter';
-import { environment } from 'src/environments/environment';
-
+import { map } from 'rxjs/operators';
+import { User } from '../login/user';
+import { AuthService } from './../services/auth.service';
 
 @Component({
   selector: 'app-nav-header',
   templateUrl: './nav-header.component.html',
-  styleUrls: ['./nav-header.component.scss']
+  styleUrls: ['./nav-header.component.scss'],
 })
 export class NavHeaderComponent implements OnInit {
-  user = {
-    login: '',
-    password: ''
-  }
-  @Input() token;
+  public user: User;
+  @Input() token: string;
   @Output() tokenChange = new EventEmitter<string>();
   title: any;
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches)
-    );
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(map((result) => result.matches));
 
-  constructor(  private breakpointObserver: BreakpointObserver, 
-                private route: ActivatedRoute, 
-                router: Router, 
-                private http: HttpClient,
-                private authService : AuthService) {
-
-
-    router.events.filter((event: any) => event instanceof NavigationEnd)
-      .subscribe(event => {
+  constructor(
+    public breakpointObserver: BreakpointObserver,
+    public route: ActivatedRoute,
+    public router: Router,
+    public http: HttpClient,
+    public authService: AuthService
+  ) {
+    router.events
+      .filter((event: any) => event instanceof NavigationEnd)
+      .subscribe((event) => {
         if (event.url === '/post-edit') {
-          this.title = 'Novo post'
+          this.title = 'Novo post';
+        } else if (event.url === '/third-page') {
+          this.title = 'Relatório Analytcs';
+        } else if (event.url === '/posts-page') {
+          this.title = 'Todos os posts';
+        } else {
+          this.title = 'Todos os posts';
         }
-        else if (event.url === '/third-page') {
-          this.title = 'Relatório Analytcs'
-        }
-        else if (event.url === '/posts-page') {
-          this.title = 'Todos os posts'
-        }
-        else{
-          this.title = 'Todos os posts'
-        }
-
       });
   }
 
-  ngOnInit(){}
+  ngOnInit() {}
 
-  logout(){
+  logout() {
     this.authService.logout();
     this.authService.userAutenticate = false;
     this.authService.showNotLogin.emit(false);
   }
-
 }

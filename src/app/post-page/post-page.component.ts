@@ -14,12 +14,12 @@ import { WordpressService } from './../services/wordpress.service';
 })
 export class PostPageComponent implements OnInit {
   @Input() token = localStorage.getItem('token');
-
-  posts: any = {};
+  value: string;
+  posts: Posts;
   public imageUrl: string;
   public postEdit: Posts;
   public content: HTMLElement | string;
-  public title: HTMLElement | string;
+  public title: string;
 
   apiUrl = environment.api_url;
   urlPost: string;

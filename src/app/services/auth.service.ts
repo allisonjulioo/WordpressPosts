@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
-import { environment } from './../../environments/environment';
 import { User } from './../login/user';
 
 @Injectable({
@@ -13,7 +12,7 @@ import { User } from './../login/user';
 export class AuthService {
   public userAutenticate: boolean;
   showNotLogin = new EventEmitter<boolean>();
-  public user: User = new User();
+  public user: User;
 
   @Input() token: string;
   @Output() tokenChange = new EventEmitter<string>();
@@ -23,13 +22,10 @@ export class AuthService {
   check(): boolean {
     return localStorage.getItem('user') ? true : false;
   }
-  login(credentials: {
-    registration: string;
-    password: string;
-  }): Observable<boolean> {
+  login(credentials): Observable<boolean> {
     return this.http
       .post<any>(
-        `${environment.api_url}/wp-json/jwt-auth/v1/token`,
+        `${credentials.mainUrl}/wp-json/jwt-auth/v1/token`,
         credentials
       )
       .do((data) => {

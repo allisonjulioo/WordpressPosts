@@ -1,4 +1,4 @@
-<div class="login-form" ngclass="'success' f.invalid ">
+<div class="login-form" ngclass="'success' formLogin.invalid ">
   <div class="left">
     <div class="content">
       <mat-toolbar color="transparent" style="background: transparent">
@@ -13,23 +13,22 @@
   <div class="right">
     <div class="content">
       <h2>Faça seu login</h2>
-      <form id="form-login" method="post" [formGroup]="f" novalidate>
+      <form id="form-login" method="post" [formGroup]="formLogin" novalidate>
         <div class="form-element form-stack">
           <label for="username-login" class="form-label">Url do seu site</label>
           <input
-            [(ngModel)]="mainUrl"
+            formControlName="mainUrl"
             id="site-url"
             type="text"
             name="url"
             autocomplete="on"
             autofocus
-            (blur)="urlSite($event)"
+            (blur)="urlSite()"
           />
         </div>
         <div class="form-element form-stack">
           <label for="username-login" class="form-label">Login</label>
           <input
-            [(ngModel)]="user.login"
             formControlName="username"
             id="username-login"
             type="text"
@@ -41,7 +40,6 @@
         <div class="form-element form-stack">
           <label for="password-login" class="form-label">Senha</label>
           <input
-            [(ngModel)]="user.password"
             formControlName="password"
             id="password-login"
             type="password"
@@ -49,7 +47,11 @@
           />
         </div>
         <div class="form-element form-submit">
-          <button mat-flat-button [disabled]="f.invalid" (click)="login()">
+          <button
+            mat-flat-button
+            [disabled]="formLogin.invalid"
+            (click)="login()"
+          >
             Entrar
           </button>
         </div>

@@ -12,15 +12,14 @@ import { User } from './user';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  private user: User = new User();
-
+  public user: User;
   public errorMsg: string;
-  mainUrl: '';
+  public mainUrl: string;
 
-  @Input() token;
+  @Input() token: string;
   @Output() tokenChange = new EventEmitter<string>();
 
-  f: FormGroup;
+  formLogin: FormGroup;
   errorCredentials = false;
 
   constructor(
@@ -34,17 +33,18 @@ export class LoginComponent implements OnInit {
   action = 'ok';
 
   ngOnInit() {
-    this.f = this.formBuilder.group({
-      username: [null, [Validators.required]],
-      password: [null, [Validators.required]],
+    this.formLogin = this.formBuilder.group({
+      mainUrl: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
     });
   }
   urlSite() {
-    localStorage.setItem('url', this.mainUrl);
+    localStorage.setItem('url', this.formLogin.value.mainUrl);
   }
   login() {
-    localStorage.setItem('url', this.mainUrl);
-    this.authService.login(this.f.value).subscribe(
+    localStorage.setItem('url', this.formLogin.value.mainUrl);
+    this.authService.login(this.formLogin.value).subscribe(
       (resp) => {
         this.authService.userAutenticate = true;
         this.authService.showNotLogin.emit(true);
