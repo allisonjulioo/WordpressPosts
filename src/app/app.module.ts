@@ -59,7 +59,7 @@ export function WpApiLoaderFactory(http: Http) {
     PaginationComponent,
   ],
   imports: [
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, { useHash: true }),
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
