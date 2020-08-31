@@ -8,6 +8,17 @@ Este projeto faz a integração do [Angular v6]() com o [Wordpress](https://word
 - Criar um post 
 - Excluir um post
 
+#### Demo
+
+Antes de ver o demo, é necessário uma configuração no site que utilizará como backend, caso não tenha um site para teste em wordpress utilize as seguintes crendenciais:
+
+[Acesse aqui o projeto](https://wordpress-posts.netlify.app)
+
+<b>Url do seu site</b>: `http://pro.alinkdigital.com.br` </br>
+<b>Login</b>: `User`</br>
+<b>Senha</b>: `1234`
+
+
 ### Iniciando as configurações para acesso a Api
 #### Iniciando o Wordpress 
   * Este App foi testado com uma versão local instalada do Wordpress, que pode ser baixada [aqui](https://wordpress.org/download/).´
