@@ -2,7 +2,7 @@
   <mat-label>
     <mat-card-content>
       <mat-card>
-        <app-ngx-editor [config]="editorConfig" [(ngModel)]="content">
+        <app-ngx-editor [config]="editorConfig" [ngModel]="content">
         </app-ngx-editor>
       </mat-card>
     </mat-card-content>
@@ -25,7 +25,7 @@
               matInput
               value="post-blog"
               class="input"
-              [(ngModel)]="posts.link"
+              [ngModel]="posts?.link"
               name="urlPost"
             />
             <button
@@ -50,19 +50,13 @@
       <img matCardImage [src]="imageUrl" />
       <mat-card-actions align="start">
         <mat-card-title><span>Ações</span></mat-card-title>
-        <button
-          mat-raised-button
-          color="primary"
-          target="_blank"
-          [disabled]="!posts.content"
-        >
+        <button mat-raised-button color="primary" target="_blank">
           Visualizar no Blog</button
         ><br />
         <button
           mat-raised-button
           color="primary"
           target="_blank"
-          [disabled]="!posts.content"
           (click)="addPost()"
         >
           Salvar</button
@@ -71,7 +65,6 @@
           mat-stroked-button
           color="warn"
           target="_blank"
-          [disabled]="!posts.content"
           (click)="posts.content = null"
         >
           Excluir

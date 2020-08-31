@@ -78,11 +78,13 @@ export class PostPageComponent implements OnInit {
 
   ngOnInit() {
     this.rest.getPost(this.route.snapshot.params.id).subscribe((data) => {
-      console.log(data);
       this.posts = data;
-      this.imageUrl = this.posts['_embedded']['wp:featuredmedia'][0][
+      const media_details = this.posts['_embedded']['wp:featuredmedia'][0][
         'media_details'
-      ].sizes['medium'].source_url;
+      ];
+      this.imageUrl = media_details
+        ? media_details.sizes['medium'].source_url
+        : './assets/img/photo.jpg';
       this.content = data.content.rendered;
       this.title = data.title.rendered;
     });
