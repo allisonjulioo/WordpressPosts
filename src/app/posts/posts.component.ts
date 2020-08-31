@@ -3,7 +3,6 @@ import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
-import { WpApiPages } from 'wp-api-angular';
 import { DataService } from '../services/data.service';
 import { WordpressService } from './../services/wordpress.service';
 import { Posts } from './posts';
@@ -40,7 +39,6 @@ export class PostsComponent {
   medias: any;
 
   constructor(
-    private wpApiPages: WpApiPages,
     public snackBar: MatSnackBar,
     private http: HttpClient,
     public rest: WordpressService,

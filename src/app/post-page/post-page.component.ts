@@ -24,6 +24,7 @@ export class PostPageComponent implements OnInit {
   apiUrl = environment.api_url;
   urlPost: string;
   action: any;
+  id = this.route.snapshot.params.id;
   editorConfig = {
     editable: true,
     spellcheck: true,
@@ -77,7 +78,12 @@ export class PostPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.rest.getPost(this.route.snapshot.params.id).subscribe((data) => {
+    if (this.id) {
+      this.getPost();
+    }
+  }
+  getPost() {
+    this.rest.getPost(this.id).subscribe((data) => {
       this.posts = data;
       const media_details = this.posts['_embedded']['wp:featuredmedia'][0][
         'media_details'
