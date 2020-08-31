@@ -13,7 +13,8 @@ $font-default: 'Exo';
 $success: #5cb85c;
 $error: #d9534f;
 .login-form {
-  display: table;
+  display: flex;
+  align-items: center;
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -49,7 +50,7 @@ input {
 }
 
 .left {
-  width: 100%;
+  width: 50%;
   height: 100%;
   background: $theme-signup-background;
   left: 0;
@@ -82,14 +83,8 @@ input {
 }
 .right {
   background: $theme-login-background;
-  width: 400px;
-  right: 10%;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  height: 600px;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px 1px #d2d2d2;
+  width: 50%;
+  height: 100%;
   label {
     color: $theme-dark;
   }
@@ -172,6 +167,9 @@ strong {
 }
 
 @media only screen and (max-width: 768px) {
+  .login-form {
+    display: block;
+  }
   .signup-info,
   .login-info {
     display: none;
